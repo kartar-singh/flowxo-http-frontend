@@ -4,13 +4,12 @@ import axios from 'axios';
 
 
 function SendMsg() {
-
   const [message, setMessage] = useState('');
   
   const handleSubmit = async (event) => {
     event.preventDefault();
  
-    const url = 'http://localhost:8000/api/message';
+    const url = 'https://e059-49-43-72-40.in.ngrok.io/api/message';
     const secret = 'db55d9faba79d0d17c4c65fa4fc0f82c4f11cf253987d5b9';
 
     const createMessage =  {
@@ -25,7 +24,7 @@ function SendMsg() {
          "text":message
       },
       "metadata":{
-         "origin":"https://1e5b-49-43-72-40.in.ngrok.io/bot"
+         "origin":"https://e059-49-43-72-40.in.ngrok.io/api"
       }
        }
 
@@ -37,28 +36,9 @@ function SendMsg() {
     }
   };
 
-  
-
-  // const messages = []
-  // const getMessages = async (event) => {
-
-  //     try {
-  //     const response = await axios.post(url,createMessage);
-  //     console.log(response);
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-    
-  //   await axios.post("/bot", function(request, response) {
-  //     console.log("this request is from bot >>>>0",request.body);
-  //     messages.push({from:'bot', message:request.body});
-  //     return response.send({ message_id: "123" });
-
-  //   });
-
     const handleBotPost = async () => {
       try {
-        const response = await axios.post('http://localhost:8000/api/bot');
+        const response = await axios.get('https://flowxo.com/api/conversations/{kartar@singh.com}');
         console.log('this request is from bot >>>>0', response.data);
         // Assuming "messages" is a state variable that has been defined elsewhere in the component...
         // setMessages(messages => [...messages, {from: 'bot', message: response.data}]);
@@ -67,17 +47,6 @@ function SendMsg() {
       }
     }
     
-    // const url = 'http://localhost:8000/api/bot';
-  
-    // try {
-    //   const response = await axios.post(url);
-    //   console.log("res>>>>>>",response);
-    // } catch (error) {
-    //   console.error("inside the erorr",error);
-    // }
-
-  
-
   function makeMessage(messageText) {
     return {
       channel: {
